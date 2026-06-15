@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Admin Panel</title>
+<link rel="stylesheet" href="../style.css">
+<style>
+
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,sans-serif;background:#f0f2f5;padding:20px;color:#333}
+
+/* LOGIN OVERLAY */
+#loginOverlay{position:fixed;top:0;left:0;width:100%;height:100%;background:linear-gradient(135deg,#667eea,#764ba2);display:flex;align-items:center;justify-content:center;z-index:9999}
+#loginBox{background:white;padding:40px;border-radius:16px;box-shadow:0 20px 60px rgba(0,0,0,0.3);width:380px;max-width:90vw;text-align:center}
+#loginBox h2{font-size:24px;margin-bottom:6px;color:#333}
+#loginBox p{color:#888;font-size:14px;margin-bottom:24px}
+#loginBox .lock-icon{font-size:48px;margin-bottom:12px}
+#loginBox input{width:100%;padding:14px 16px;border:2px solid #e0e0e0;border-radius:10px;font-size:16px;outline:none;transition:0.2s;box-sizing:border-box}
+#loginBox input:focus{border-color:#667eea}
+#loginBox .login-error{color:#d32f2f;font-size:13px;margin-top:8px;min-height:20px}
+#loginBox button{width:100%;padding:14px;background:linear-gradient(135deg,#667eea,#764ba2);color:white;border:none;border-radius:10px;font-size:16px;font-weight:bold;cursor:pointer;margin-top:16px;transition:0.2s}
+#loginBox button:hover{transform:translateY(-1px);box-shadow:0 4px 15px rgba(102,126,234,0.4)}
+#loginBox button:active{transform:translateY(0)}
+
+#adminContainer{display:none;max-width:1100px;margin:auto}
+
+h1{margin-bottom:4px;font-size:26px}
+.header-desc{color:#666;margin-bottom:20px;font-size:14px}
+
+/* TABS */
+.tabs{display:flex;gap:0;margin-bottom:20px;border-bottom:2px solid #ddd}
+.tab{background:#f8f9fa;border:1px solid #ddd;border-bottom:none;padding:12px 24px;cursor:pointer;font-size:14px;font-weight:bold;color:#666;border-radius:8px 8px 0 0;transition:0.2s}
+.tab:hover{background:#e8e8e8}
+.tab.active{background:white;color:#1976d2;border-bottom:2px solid white;margin-bottom:-2px}
+
+/* TAB CONTENT */
+.tab-content{display:none;background:white;padding:25px;border-radius:0 12px 12px 12px;box-shadow:0 2px 10px rgba(0,0,0,0.08)}
+.tab-content.active{display:block}
+
+/* FORMS */
+.form-group{margin-bottom:15px}
+.form-group label{display:block;font-weight:bold;margin-bottom:5px;font-size:13px}
+.form-group input,.form-group textarea,.form-group select{width:100%;padding:10px;border:1px solid #ddd;border-radius:8px;font-size:14px;box-sizing:border-box}
+.form-group textarea{min-height:70px;resize:vertical;font-family:monospace}
+.form-group select{background:white;cursor:pointer}
+
+/* OPTION ROWS */
+.option-row{display:flex;gap:8px;margin-bottom:8px;align-items:flex-start}
+.option-row textarea{flex:1;padding:8px;border:1px solid #ddd;border-radius:6px;font-size:13px;min-height:50px;resize:vertical;font-family:monospace}
+.option-row button{padding:6px 12px;background:#ff4d4d;color:white;border:none;border-radius:6px;cursor:pointer;font-size:12px;margin-top:2px}
+
+/* BUTTONS */
+.btn-primary{background:#1976d2;color:white;border:none;padding:10px 24px;border-radius:8px;cursor:pointer;font-weight:bold;font-size:14px}
+.btn-primary:hover{background:#1565c0}
+.btn-secondary{background:#607d8b;color:white;border:none;padding:8px 16px;border-radius:6px;cursor:pointer;font-size:13px}
+.btn-secondary:hover{background:#546e7a}
+.btn-danger{background:#d32f2f;color:white;border:none;padding:6px 12px;border-radius:6px;cursor:pointer;font-size:12px}
+.btn-danger:hover{background:#c62828}
+.btn-edit{background:#388e3c;color:white;border:none;padding:6px 12px;border-radius:6px;cursor:pointer;font-size:12px}
+.btn-edit:hover{background:#2e7d32}
+.btn-warning{background:#f57c00;color:white;border:none;padding:6px 12px;border-radius:6px;cursor:pointer;font-size:12px}
+.btn-warning:hover{background:#ef6c00}
+.btn-success{background:#2e7d32;color:white;border:none;padding:8px 16px;border-radius:6px;cursor:pointer;font-size:13px}
+.btn-success:hover{background:#1b5e20}
+.btn-info{background:#0288d1;color:white;border:none;padding:6px 12px;border-radius:6px;cursor:pointer;font-size:12px}
+.btn-info:hover{background:#0277bd}
+
+.add-option-btn{background:#e0e0e0;border:1px dashed #aaa;padding:8px;border-radius:6px;cursor:pointer;font-size:13px;width:100%;text-align:center;color:#555;margin-bottom:10px}
+.add-option-btn:hover{background:#d0d0d0}
+
+/* SECTION CARDS */
+.section-card{display:flex;align-items:center;gap:12px;padding:14px 16px;border:1px solid #e0e0e0;border-radius:10px;margin-bottom:10px;background:#fafafa;transition:0.2s}
+.section-card:hover{border-color:#bbb;background:#f5f5f5}
+.section-card .drag{font-size:20px;color:#aaa;cursor:grab;user-select:none}
+.section-card .drag:active{cursor:grabbing}
+.section-card .name{flex:1;font-weight:bold;font-size:15px}
+.section-card .q-count{font-size:12px;color:#888;margin-right:10px}
+.section-card .actions{display:flex;gap:6px}
+
+/* SUBSECTION ORDER */
+.subsection-order-area{margin-top:6px;padding-left:34px;display:flex;flex-direction:column;gap:6px}
+.subsection-order-area .sub-header-row{display:flex;align-items:center;gap:10px}
+.subsection-order-area .sub-label{font-size:11px;color:#888;font-weight:bold}
+.btn-sm{font-size:11px;padding:4px 10px !important}
+.subsection-edit-item{display:flex;align-items:center;gap:6px;background:#f0f4ff;padding:6px 10px;border-radius:6px;border:1px solid #dde8f5;transition:0.2s}
+.subsection-edit-item:hover{background:#e3edfd}
+.sub-label-input{flex:1;min-width:120px;padding:4px 8px;border:1px solid #ccc;border-radius:4px;font-size:12px;background:white}
+.sub-label-input:focus{border-color:#1976d2;outline:none}
+.sub-type-select{padding:4px 6px;border:1px solid #ccc;border-radius:4px;font-size:11px;background:white;cursor:pointer}
+.sub-move-group{display:flex;gap:2px}
+.sub-move{cursor:pointer;font-size:12px;padding:2px 4px;color:#1565c0;transition:0.15s}
+.sub-move:hover{background:#bbdefb;border-radius:3px}
+
+/* QUESTION CARDS */
+.question-card{border:1px solid #e0e0e0;border-radius:10px;padding:16px;margin-bottom:12px;background:#fafafa}
+.question-card .q-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px}
+.question-card .q-title{font-weight:bold;font-size:14px}
+.question-card .q-badges{display:flex;gap:6px}
+.question-card .q-badge{font-size:11px;padding:3px 8px;border-radius:4px;font-weight:bold;text-transform:uppercase}
+.q-badge-scq{background:#e3f2fd;color:#1565c0}
+.q-badge-mcq{background:#fce4ec;color:#c62828}
+.q-badge-numerical{background:#e8f5e9;color:#2e7d32}
+.q-badge-section{background:#fff3e0;color:#e65100}
+.q-badge-image{background:#f3e5f5;color:#7b1fa2}
+.q-badge-marks{background:#e8f5e9;color:#1b5e20}
+
+.question-card .q-text{font-size:13px;color:#333;margin-bottom:8px;line-height:1.5}
+.question-card .q-answer{font-size:12px;color:#2e7d32}
+.question-card .q-actions{display:flex;gap:8px;margin-top:10px}
+
+/* LIVE PREVIEW */
+.live-preview{background:#f8f9fa;border:1px solid #e0e0e0;border-radius:10px;padding:16px;margin-bottom:15px;min-height:80px}
+.live-preview h4{font-size:13px;color:#666;margin-bottom:8px;text-transform:uppercase;letter-spacing:0.5px}
+.live-preview .preview-content{font-size:14px;line-height:1.8}
+.live-preview .preview-content .preview-option{margin:4px 0;padding:4px 8px;background:white;border-radius:4px;border:1px solid #eee}
+
+/* IMAGE MANAGER */
+.image-manager{border:1px solid #e0e0e0;border-radius:10px;padding:16px;margin-bottom:15px;background:#fafafa}
+.image-manager h4{font-size:13px;color:#666;margin-bottom:8px;text-transform:uppercase;letter-spacing:0.5px}
+.image-upload-area{display:flex;gap:10px;align-items:center;margin-bottom:12px}
+.image-upload-area input[type="file"]{flex:1;padding:8px;border:1px solid #ddd;border-radius:6px;background:white;font-size:13px}
+.image-list{display:flex;flex-wrap:wrap;gap:10px}
+.image-item{position:relative;border:1px solid #ddd;border-radius:8px;padding:8px;background:white;width:150px;text-align:center}
+.image-item img{max-width:130px;max-height:100px;border-radius:4px;margin-bottom:6px;cursor:pointer}
+.image-item .img-alt{font-size:10px;color:#888;margin-bottom:4px;word-break:break-all}
+.image-item .img-actions{display:flex;gap:4px;justify-content:center;flex-wrap:wrap}
+.image-item .img-actions button{font-size:10px;padding:3px 6px}
+.image-item .img-id{position:absolute;top:2px;left:4px;background:#1976d2;color:white;font-size:9px;padding:1px 5px;border-radius:3px;font-weight:bold}
+
+/* TABLE BUILDER */
+.table-builder{border:1px solid #e0e0e0;border-radius:10px;padding:16px;margin-bottom:15px;background:#fafafa}
+.table-builder h4{font-size:13px;color:#666;margin-bottom:8px;text-transform:uppercase;letter-spacing:0.5px}
+.table-editor{overflow-x:auto}
+.table-editor table{width:100%;border-collapse:collapse;margin-bottom:10px}
+.table-editor td{border:1px solid #ccc;padding:4px}
+.table-editor td input{width:100%;border:none;padding:6px 4px;font-size:13px;background:transparent;outline:none}
+.table-editor td input:focus{background:#e3f2fd;border-radius:3px}
+.table-editor td .cell-actions{display:flex;gap:2px;justify-content:center}
+.table-editor td .cell-actions button{font-size:9px;padding:1px 4px;background:#eee;border:1px solid #ddd;border-radius:3px;cursor:pointer}
+.table-editor .header-cell{background:#e3f2fd;font-weight:bold}
+.table-controls{display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap}
+.table-controls button{font-size:12px;padding:5px 10px}
+.table-list-item{display:flex;align-items:center;gap:8px;padding:8px 12px;background:white;border:1px solid #e0e0e0;border-radius:6px;margin-bottom:6px}
+.table-list-item .tbl-preview{font-size:11px;color:#666;flex:1}
+.table-list-item .tbl-actions{display:flex;gap:4px}
+
+/* SETTINGS */
+.settings-group{max-width:500px;margin-bottom:20px;padding:20px;border:1px solid #e0e0e0;border-radius:10px;background:#fafafa}
+.settings-group h3{margin-bottom:10px;font-size:16px}
+.settings-group .form-group{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.settings-group .form-group label{margin-bottom:0;min-width:120px}
+.settings-group .form-group input{max-width:120px}
+
+/* PREVIEW */
+.preview-section{margin-bottom:25px}
+.preview-section h2{font-size:18px;color:#1976d2;margin-bottom:10px;padding-bottom:6px;border-bottom:2px solid #e0e0e0}
+.preview-subsection{margin-bottom:15px;margin-left:15px}
+.preview-subsection h3{font-size:14px;font-weight:bold;color:#555;margin-bottom:8px}
+.preview-q{font-size:13px;padding:8px 12px;background:#f8f9fa;border-radius:6px;margin-bottom:6px;border-left:3px solid #1976d2;line-height:1.5}
+.preview-q .pq-num{font-weight:bold;color:#1976d2;margin-right:6px}
+.preview-marks{display:block;font-size:11px;color:#888;margin-top:4px;font-style:italic}
+
+/* Preview images & tables */
+.preview-q img.preview-img{max-width:100%;border-radius:4px;margin:6px 0}
+.preview-q .preview-table-wrap{margin:8px 0;overflow-x:auto}
+.preview-q .preview-table-wrap table{border-collapse:collapse;width:auto;min-width:200px}
+.preview-q .preview-table-wrap td,.preview-q .preview-table-wrap th{border:1px solid #bbb;padding:6px 10px;font-size:12px;text-align:center}
+.preview-q .preview-table-wrap th{background:#e3f2fd;font-weight:bold}
+.preview-q .preview-table-wrap .tbl-caption{font-size:11px;color:#666;font-style:italic;text-align:center;margin-top:2px}
+
+/* BULK IMPORT */
+.bulk-textarea{width:100%;min-height:250px;font-family:monospace;font-size:12px;padding:10px;border:1px solid #ddd;border-radius:8px;resize:vertical}
+.bulk-hint{font-size:12px;color:#888;margin-bottom:10px;background:#fff3e0;padding:10px;border-radius:6px;line-height:1.6}
+
+/* RESULTS */
+.no-data{text-align:center;color:#999;padding:40px;font-size:14px}
+
+.home-link{display:inline-block;margin-bottom:15px;color:#1976d2;text-decoration:none;font-size:14px}
+.home-link:hover{text-decoration:underline}
+
+.form-row{display:flex;gap:12px}
+.form-row .form-group{flex:1}
+
+.form-footer{display:flex;gap:10px;margin-top:15px}
+#cancelBtn{display:none}
+</style>
+<script>
+window.MathJax = {
+  tex: {
+    inlineMath: [['\\(', '\\)']]
+  }
+};
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+
+<!-- LOGIN OVERLAY -->
+<div id="loginOverlay">
+<div id="loginBox">
+<div class="lock-icon">🔒</div>
+<h2>Admin Access</h2>
+<p>Enter the admin password to access the panel.</p>
+<input type="password" id="passwordInput" placeholder="Password" onkeydown="if(event.key==='Enter')checkPassword()" autofocus style="margin-bottom:10px">
+<div id="loginError" class="login-error"></div>
+<button onclick="checkPassword()">Unlock</button>
+</div>
+</div>
+
+<div id="adminContainer">
+
+<a href="../index.html" class="home-link">&larr; Back to Test</a>
+<h1>📝 Admin Panel</h1>
+<p class="header-desc">Manage sections, questions, settings, and preview the test.</p>
+
+<!-- TABS -->
+<div class="tabs">
+<div class="tab active" data-tab="questions" onclick="switchTab('questions')">📋 Questions</div>
+<div class="tab" data-tab="sections" onclick="switchTab('sections')">📂 Sections</div>
+<div class="tab" data-tab="settings" onclick="switchTab('settings')">⚙️ Settings</div>
+<div class="tab" data-tab="preview" onclick="switchTab('preview')">👁 Preview</div>
+</div>
+
+<!-- TAB: QUESTIONS -->
+<div id="tab-questions" class="tab-content active">
+
+<div id="questionForm">
+<h2 id="formTitle" style="margin-bottom:15px;font-size:17px">Add New Question</h2>
+
+<div class="form-row">
+<div class="form-group">
+<label for="qSection">Section</label>
+<select id="qSection" onchange="onSectionChange()"><option value="">Select section...</option></select>
+</div>
+<div class="form-group">
+<label for="qSubsection">Subsection</label>
+<select id="qSubsection" onchange="toggleOptions(); updateLivePreview();">
+</select>
+</div>
+</div>
+
+<div class="form-row">
+<div class="form-group">
+<label for="qTotalMarks">Total Marks</label>
+<input type="number" id="qTotalMarks" value="4" min="0" step="0.5" oninput="updateLivePreview()">
+</div>
+<div class="form-group">
+<label for="qNegativeMarks">Negative Marks</label>
+<input type="number" id="qNegativeMarks" value="1" min="0" step="0.5" oninput="updateLivePreview()">
+</div>
+</div>
+
+<div class="form-group">
+<label for="qText">Question Text (supports \( ... \) LaTeX; use [img:N] for images, [table:N] for tables)</label>
+<textarea id="qText" placeholder="Enter question text with \( ... \) for math.&#10;Insert [img:0], [img:1] etc. to embed uploaded images inline.&#10;Insert [table:0], [table:1] etc. to embed tables." oninput="updateLivePreview()"></textarea>
+</div>
+
+<!-- LIVE PREVIEW -->
+<div class="live-preview">
+<h4>🔍 Live Preview</h4>
+<div id="livePreviewContent" class="preview-content">
+<p style="color:#999;font-style:italic">Start typing to see preview with LaTeX, images, and tables rendered...</p>
+</div>
+</div>
+
+<!-- IMAGE MANAGER -->
+<div class="image-manager">
+<h4>🖼️ Images for this Question</h4>
+<div class="image-upload-area">
+<input type="file" id="imageUpload" accept="image/*" multiple onchange="handleImageUpload(event)">
+<button class="btn-info" onclick="document.getElementById('imageUpload').click()">+ Upload Images</button>
+</div>
+<p style="font-size:11px;color:#888;margin-bottom:8px">Use <code>[img:0]</code>, <code>[img:1]</code> etc. in the question text to embed images inline. Images without placeholders appear at the end.</p>
+<div id="imageList" class="image-list"></div>
+</div>
+
+<!-- TABLE BUILDER -->
+<div class="table-builder">
+<h4>📊 Tables for this Question</h4>
+<div class="table-controls">
+<button class="btn-info" onclick="addNewTable()">+ Add Table</button>
+</div>
+<p style="font-size:11px;color:#888;margin-bottom:8px">Use <code>[table:0]</code>, <code>[table:1]</code> etc. in the question text to embed tables inline. Tables without placeholders appear at the end.</p>
+<div id="tableList"></div>
+</div>
+
+<div id="optionsArea">
+<div class="form-group">
+<label>Options (each supports \( ... \) LaTeX and [img:N] for images)</label>
+<div id="optionsContainer"></div>
+<button class="add-option-btn" onclick="addOption()">+ Add Option</button>
+</div>
+</div>
+
+<div class="form-group" id="answerGroup">
+<label for="qAnswer">Correct Answer</label>
+<input type="text" id="qAnswer" placeholder="Letter of option (A/B/C…) for SCQ, comma-separated for MCQ, or number for Numerical">
+</div>
+
+<input type="hidden" id="editId" value="">
+<input type="hidden" id="questionImages" value="">
+<input type="hidden" id="questionTables" value="">
+
+<div class="form-footer">
+<button class="btn-primary" onclick="saveQuestion()">💾 Save Question</button>
+<button class="btn-secondary" onclick="cancelEdit()" id="cancelBtn">Cancel</button>
+</div>
+</div>
+
+<hr style="margin:20px 0">
+
+<div id="questionsList">
+<h2 style="margin-bottom:15px;font-size:17px">All Questions</h2>
+<div style="display:flex;gap:10px;margin-bottom:15px;flex-wrap:wrap;align-items:center">
+<select id="filterSection" onchange="renderQuestions()" style="padding:6px 10px;border:1px solid #ddd;border-radius:6px">
+<option value="">All Sections</option>
+</select>
+<button class="btn-secondary" onclick="showBulkImport()">📥 Bulk Import</button>
+<button class="btn-secondary" onclick="toggleMathPreview()">🔢 Toggle Math Preview</button>
+</div>
+<div id="questionsContainer"></div>
+</div>
+
+<!-- BULK IMPORT MODAL -->
+<div id="bulkImportArea" style="display:none;margin-top:15px;padding:20px;border:1px solid #e0e0e0;border-radius:10px;background:#fafafa">
+<h3 style="margin-bottom:10px">📥 Bulk Import Questions</h3>
+<p class="bulk-hint">
+Paste a JSON array of questions. Each question needs at least: <code>"question"</code>, <code>"type"</code> (single/multi/numerical), <code>"answer"</code>.
+Optional: <code>"options"</code> (array), <code>"sectionId"</code> (number), <code>"subsection"</code> (string),
+<code>"images"</code> (array of {id, src, alt}), <code>"tables"</code> (array of {id, caption, headers, rows}).
+</p>
+<textarea id="bulkData" class="bulk-textarea" placeholder='[
+  {"question": "What is 2+2? [img:0]", "type": "single", "options": ["3","4","5"], "answer": 1, "sectionId": 1, "subsection": "single", "images": [{"id": 0, "src": "data:image/png;base64,...", "alt": "formula"}], "tables": []}
+]'></textarea>
+<div style="margin-top:10px;display:flex;gap:10px">
+<button class="btn-primary" onclick="bulkImport()">Import Questions</button>
+<button class="btn-secondary" onclick="document.getElementById('bulkImportArea').style.display='none'">Cancel</button>
+</div>
+<div id="bulkResult" style="margin-top:10px;font-size:13px"></div>
+</div>
+
+</div>
+
+<!-- TAB: SECTIONS -->
+<div id="tab-sections" class="tab-content">
+
+<h2 style="margin-bottom:15px;font-size:17px">Manage Sections</h2>
+
+<div style="display:flex;gap:10px;margin-bottom:20px">
+<input type="text" id="newSectionName" placeholder="New section name (e.g. Physics, Chemistry)" style="flex:1;padding:10px;border:1px solid #ddd;border-radius:8px;font-size:14px">
+<button class="btn-primary" onclick="addSection()">+ Add Section</button>
+</div>
+
+<p style="font-size:12px;color:#888;margin-bottom:10px">Drag sections to reorder. Deleting a section removes questions from that section (sets them to unassigned). You can add, edit label/type, reorder, or remove subsections within each section. Questions reference subsections by ID; if you remove a subsection, related questions become unassigned from that subsection.</p>
+
+<div id="sectionsContainer"></div>
+
+</div>
+
+<!-- TAB: SETTINGS -->
+<div id="tab-settings" class="tab-content">
+
+<h2 style="margin-bottom:15px;font-size:17px">Exam Settings</h2>
+
+<div class="settings-group">
+<h3>⏱ Timer Duration</h3>
+<div class="form-group">
+<label for="timerHours">Hours:</label>
+<input type="number" id="timerHours" min="0" max="23" value="1">
+</div>
+<div class="form-group">
+<label for="timerMinutes">Minutes:</label>
+<input type="number" id="timerMinutes" min="0" max="59" value="30">
+</div>
+<button class="btn-primary" onclick="saveConfig()">💾 Save Timer</button>
+<div id="configStatus" style="margin-top:8px;font-size:13px;color:#2e7d32"></div>
+</div>
+
+<div class="settings-group">
+<h3>📊 Results</h3>
+<button class="btn-secondary" onclick="viewResults()">View Saved Results</button>
+<div id="resultsContainer" style="margin-top:10px;font-size:13px;max-height:300px;overflow:auto"></div>
+</div>
+
+</div>
+
+<!-- TAB: PREVIEW -->
+<div id="tab-preview" class="tab-content">
+
+<h2 style="margin-bottom:15px;font-size:17px">Test Preview</h2>
+<p class="header-desc" style="margin-bottom:15px">Questions grouped by section and subsection, in the order they'll appear in the test. Images and tables are rendered.</p>
+
+<div id="previewContainer"></div>
+
+</div>
+
+</div>
+
+<script>
+/* ========================================= */
+/* CRITICAL FUNCTIONS (inlined for reliability) */
+/* ========================================= */
+function switchTab(name){
+    document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
+    document.querySelectorAll(".tab-content").forEach(tc => tc.classList.remove("active"));
+    const tab = document.querySelector(`.tab[data-tab="${name}"]`);
+    if(tab) tab.classList.add("active");
+    const content = document.getElementById("tab-" + name);
+    if(content) content.classList.add("active");
+    if(name === "sections") loadSections();
+    if(name === "preview") loadPreview();
+    if(name === "settings") loadConfig();
+    if(name === "questions") loadQuestions();
+}
+</script>
+<script src="admin.js"></script>
+</body>
+</html>

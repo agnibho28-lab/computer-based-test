@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>CBT</title>
+
+<link rel="stylesheet" href="style.css">
+
+<script>
+
+window.MathJax = {
+
+  tex: {
+
+    inlineMath: [['\\(', '\\)']]
+  }
+};
+
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+</head>
+
+<body>
+
+<!-- LOGIN PAGE -->
+
+<div id="loginPage">
+
+  <button id="loginThemeBtn"
+onclick="toggleTheme()"
+title="Toggle Theme">
+
+🌙
+
+</button>
+
+  <div id="loginCard">
+
+    <div id="loginBrand">
+      <div id="loginLogo">📝</div>
+      <h1 id="loginTitle">Welcome</h1>
+      <p id="loginSubtitle">Enter your email to begin the assessment</p>
+    </div>
+
+    <form
+    id="loginForm"
+    autocomplete="on">
+
+      <div id="loginInputGroup">
+        <label for="emailInput" id="loginEmailLabel">Email Address</label>
+        <div id="loginInputWrapper">
+          <span id="loginInputIcon">✉️</span>
+          <input
+          type="email"
+          id="emailInput"
+          name="username"
+          placeholder="you@example.com"
+          autocomplete="username email"
+          required>
+        </div>
+      </div>
+
+      <input type="submit" style="display:none">
+
+      <button id="startBtn" type="button" onclick="startQuiz()">
+        <span id="startBtnText">Start Test</span>
+        <span id="startBtnArrow">→</span>
+      </button>
+
+    </form>
+
+    <div id="loginFooter">
+      <p>By continuing, you agree to the test guidelines.</p>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- INSTRUCTIONS OVERLAY -->
+
+<div id="instructionsOverlay" style="display:none;">
+
+  <div id="instructionsContainer">
+
+    <div id="instructionsHeader">
+
+      <h1>📝 Test Instructions</h1>
+
+      <button id="instructionsThemeBtn" onclick="toggleTheme()">🌙</button>
+
+    </div>
+
+    <div id="instructionsBody">
+
+      <!-- Dynamically populated by script.js -->
+
+    </div>
+
+    <div id="instructionsFooter">
+
+      <button id="continueBtn" onclick="continueToTest()">▶ Continue Test</button>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- QUIZ -->
+
+<div id="quizContainer" style="display:none;">
+
+<div id="sidebar">
+
+<div id="topBar">
+
+<h2 id="timer">
+--:--:--
+</h2>
+
+<button
+class="submitBtn"
+onclick="submitTest()">
+
+Submit
+
+</button>
+
+<button
+id="showInstructionsBtn"
+title="View Instructions"
+onclick="showInstructionsOverlay()">
+
+📋
+
+</button>
+
+<button id="themeBtn"
+onclick="toggleTheme()">
+
+🌙
+
+</button>
+
+</div>
+
+<div id="sidebarTop">
+
+<div id="progressContainer">
+
+<div id="progressBar"></div>
+
+</div>
+
+<p id="progressText">
+
+0 / 0 Attempted
+
+</p>
+
+</div>
+
+<div id="sidebarScrollable">
+
+<h2>Questions</h2>
+
+<div id="allNav"></div>
+
+</div>
+
+</div>
+
+<div id="main">
+
+<div id="questions"></div>
+
+</div>
+
+</div>
+
+<!-- LOAD QUESTIONS FROM SERVER -->
+
+<script src="script.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,438 @@
+{
+  "questions": [
+    {
+      "sectionId": 1,
+      "subsection": "single",
+      "type": "single",
+      "question": "Let \\(X=({}^{10}C_{1})^2+2({}^{10}C_{2})^2+3({}^{10}C_{3})^2+...+10({}^{10}C_{10})^2\\), the value of \\(\\displaystyle\\frac{X}{10}\\) is",
+      "options": [
+        "\\({}^{19}C_{9}\\)",
+        "\\({}^{21}C_{10}\\)",
+        "\\({}^{19}C_{8}\\)",
+        "\\({}^{20}C_{11}\\)"
+      ],
+      "answer": 0,
+      "totalMarks": 4,
+      "negativeMarks": 1,
+      "images": [],
+      "tables": [],
+      "id": 1
+    },
+    {
+      "sectionId": 1,
+      "subsection": "single",
+      "type": "single",
+      "question": "Let the smallest value of \\(k\\) of \\(k \\in \\mathbb{N}\\), for which the coefficient of \\(x^3\\) in \\(\\displaystyle(1+x)^3+(1+x)^4+(1+x)^5+...+(1+x)^{99}+(1+kx)^{100}=\\left (43n+\\frac{101}{4}\\right)({}^{100}C_{3})\\), \\(x\\neq0\\) for some \\(n \\in \\mathbb{N}\\), be \\(p\\). Then the value of \\(p+n\\) is",
+      "options": [
+        "\\(10\\)",
+        "\\(11\\)",
+        "\\(12\\)",
+        "\\(13\\)"
+      ],
+      "answer": 1,
+      "totalMarks": 4,
+      "negativeMarks": 1,
+      "images": [],
+      "tables": [],
+      "id": 2
+    },
+    {
+      "sectionId": 1,
+      "subsection": "single",
+      "type": "single",
+      "question": "The number of integral terms in the expansion of \\(\\displaystyle \\left (5^{\\frac{1}{2}}+7^{\\frac{1}{8}}\\right)^{1016} \\) is",
+      "options": [
+        "\\(128\\)",
+        "\\(126\\)",
+        "\\(127\\)",
+        "\\(129\\)"
+      ],
+      "answer": 0,
+      "totalMarks": 4,
+      "negativeMarks": 1,
+      "images": [],
+      "tables": [],
+      "id": 3
+    },
+    {
+      "sectionId": 1,
+      "subsection": "single",
+      "type": "single",
+      "question": "The coefficient of \\(x^9\\) in the expansion of \\((1+x)(1+x^2)(1+x^3)...(1+x^{100})\\) is",
+      "options": [
+        "\\(10\\)",
+        "\\(15\\)",
+        "\\(5\\)",
+        "\\(8\\)"
+      ],
+      "answer": 3,
+      "totalMarks": 4,
+      "negativeMarks": 1,
+      "images": [],
+      "tables": [],
+      "id": 4
+    },
+    {
+      "sectionId": 1,
+      "subsection": "single",
+      "type": "single",
+      "question": "The value of \\((1^r+2^r+...+n^r)^n\\), where \\(r\\) is a real number, is",
+      "options": [
+        "greater than or equal to \\(n^n.(n!)^r\\).",
+        "less than \\(n^n.(n!)^{2r}\\).",
+        "less than or equal to \\(n^{2n}.(n!)^r\\).",
+        "greater than \\(n^n.(n!)^r\\)."
+      ],
+      "answer": 3,
+      "totalMarks": 4,
+      "negativeMarks": 1,
+      "images": [],
+      "tables": [],
+      "id": 5
+    },
+    {
+      "sectionId": 1,
+      "subsection": "single",
+      "type": "single",
+      "question": "Let \\(A=\\{a+bi\\ |\\ a,b \\ \\text{are integers}\\}\\), \\([i=\\sqrt{-1}]\\) and \\(\\displaystyle U=\\left\\{x \\in A\\ |\\ \\frac{1}{x} \\in A\\right\\}\\). Then the number of elements in \\(U\\) is",
+      "options": [
+        "\\(2\\)",
+        "\\(4\\)",
+        "\\(6\\)",
+        "\\(8\\)"
+      ],
+      "answer": 1,
+      "totalMarks": 4,
+      "negativeMarks": 1,
+      "images": [],
+      "tables": [],
+      "id": 6
+    },
+    {
+      "sectionId": 1,
+      "subsection": "single",
+      "type": "single",
+      "question": "Among the complex numbers \\(z\\) satisfying \\(|z-25i|\\leq15\\), the number having the least argument is",
+      "options": [
+        "\\(10i\\)",
+        "\\(-15+25i\\)",
+        "\\(12+16i\\)",
+        "\\(7+12i\\)"
+      ],
+      "answer": 2,
+      "totalMarks": 4,
+      "negativeMarks": 1,
+      "images": [],
+      "tables": [],
+      "id": 7
+    },
+    {
+      "sectionId": 1,
+      "subsection": "single",
+      "type": "single",
+      "question": "If the point \\(z\\) in the complex plane describes a circle of radius \\(2\\) with centre at the origin, then the point \\(\\displaystyle z+\\frac{1}{z}\\) describes",
+      "options": [
+        "a circle",
+        "a parabola",
+        "an ellipse",
+        "a hyperbola"
+      ],
+      "answer": 2,
+      "totalMarks": 4,
+      "negativeMarks": 1,
+      "images": [],
+      "tables": [],
+      "id": 8
+    },
+    {
+      "sectionId": 1,
+      "subsection": "single",
+      "type": "single",
+      "question": "Let \\(\\langle a_n \\rangle\\) be a sequence such that \\(\\displaystyle a_1+a_2+...+a_n=\\frac{n^2+3n}{(n+1)(n+2)}\\). If \\(\\displaystyle 28\\sum_{k=1}^{10}\\frac{1}{a_k}=p_1p_2p_3...p_m\\), where \\(p_1,p_2,...,p_m\\) are first \\(m\\) prime numbers then, \\(m\\) is equal to",
+      "options": [
+        "\\(5\\)",
+        "\\(7\\)",
+        "\\(6\\)",
+        "\\(8\\)"
+      ],
+      "answer": 2,
+      "totalMarks": 4,
+      "negativeMarks": 1,
+      "images": [],
+      "tables": [],
+      "id": 9
+    },
+    {
+      "sectionId": 1,
+      "subsection": "single",
+      "type": "single",
+      "question": "For the matrices \\(A = \\begin{bmatrix}3 & -4 \\\\1 & -1\\end{bmatrix}\\) and \\(B = \\begin{bmatrix}-29 & 49 \\\\-13 & 18\\end{bmatrix}\\), if \\((A^{15}+B)\\begin{bmatrix}x\\\\y \\end{bmatrix}=\\begin{bmatrix}0\\\\0 \\end{bmatrix}\\), then among the following which one is true?",
+      "options": [
+        "\\(x=16\\), \\(y=9\\)",
+        "\\(x=11\\), \\(y=2\\)",
+        "\\(x=5\\), \\(y=7\\)",
+        "\\(x=18\\), \\(y=11\\)"
+      ],
+      "answer": 1,
+      "totalMarks": 4,
+      "negativeMarks": 1,
+      "images": [],
+      "tables": [],
+      "id": 10
+    },
+    {
+      "sectionId": 1,
+      "subsection": "numerical",
+      "type": "numerical",
+      "question": "If \\(\\displaystyle x=\\frac{1+\\sqrt{2026}}{3}\\) then the remainder when \\(\\displaystyle\\left\\lfloor\\frac{9x^3+18x^2-2041x}{200}\\right\\rfloor^{\\lfloor6x\\rfloor}\\) [\\(\\lfloor t \\rfloor\\) denotes the greatest integer less than or equal to \\(t\\)], is divided by \\(36\\) is ______.",
+      "options": [],
+      "answer": 9,
+      "totalMarks": 4,
+      "negativeMarks": 1,
+      "images": [],
+      "tables": [],
+      "id": 11
+    },
+    {
+      "sectionId": 1,
+      "subsection": "numerical",
+      "type": "numerical",
+      "question": "Let the coefficient of \\(x^4\\) in the expansion of \\((1+ax+bx^2+cx^3)^6\\), where \\(a,b,c\\) are non-zero real numbers, be \\(3000\\). If the equation \\(x^2+ax-b=0\\) has equal roots and the ratio of the roots of the equation \\(\\displaystyle ax^2+bx+\\frac{c}{18}=0\\) is \\(1:5\\), then the value of \\(3b^2\\) is ______.",
+      "options": [],
+      "answer": 100,
+      "totalMarks": 4,
+      "negativeMarks": 1,
+      "images": [],
+      "tables": [],
+      "id": 12
+    },
+    {
+      "sectionId": 1,
+      "subsection": "numerical",
+      "type": "numerical",
+      "question": "Let \\(C_1\\) be the circle in the third quadrant of radius \\(3\\), that touches both coordinate axes. Let \\(C_2\\) be the circle with centre \\((1,3)\\) that touches \\(C_1\\) externally at the point \\((\\alpha,\\beta)\\). If \\(\\displaystyle(\\beta-\\alpha)^2=\\frac{p}{q}\\),  and \\(\\gcd{(p,q)}=\\lfloor l\\rfloor\\), where \\(l\\) is the distance between \\(C_1\\) and \\(C_2\\) and \\(\\lfloor t \\rfloor\\) denotes the greatest integer less than or equal to \\(t\\), then \\(|p-q|\\) is equal to ______.",
+      "options": [],
+      "answer": 28,
+      "totalMarks": 4,
+      "negativeMarks": 1,
+      "images": [],
+      "tables": [],
+      "id": 13
+    },
+    {
+      "sectionId": 1,
+      "subsection": "numerical",
+      "type": "numerical",
+      "question": "Consider the equation of the form \\(x^2+bx+c=0\\). The number of such equations that have real roots and have coefficients \\(b\\) and \\(c\\) in the set \\(\\{1,2,3,4,5,6\\}\\), (\\(b\\) maybe equal to \\(c\\)), is ______.",
+      "options": [],
+      "answer": 19,
+      "totalMarks": 4,
+      "negativeMarks": 1,
+      "images": [],
+      "tables": [],
+      "id": 14
+    },
+    {
+      "sectionId": 1,
+      "subsection": "numerical",
+      "type": "numerical",
+      "question": "The number of points at which the curve \\(y+7=||x|^7-7|x|-2|\\) cuts the \\(x\\)-axis is ______.",
+      "options": [],
+      "answer": 6,
+      "totalMarks": 4,
+      "negativeMarks": 1,
+      "images": [],
+      "tables": [],
+      "id": 15
+    },
+    {
+      "sectionId": 1,
+      "subsection": "numerical",
+      "type": "numerical",
+      "question": "Let \\(\\displaystyle\\alpha=\\sum_{r=0}^n (4r^2+2r+1) \\ {}^nC_r\\) and \\(\\displaystyle \\beta=\\left(\\sum_{r=0}^n \\frac{{}^nC_r}{r+1}\\right)+\\frac{1}{n+1}\\). If \\(\\displaystyle 281<\\frac{2\\alpha}{\\beta}<481\\), then the value of \\(n\\) is ______.",
+      "options": [],
+      "answer": 6,
+      "totalMarks": 4,
+      "negativeMarks": 1,
+      "images": [],
+      "tables": [],
+      "id": 16
+    },
+    {
+      "sectionId": 1,
+      "subsection": "numerical",
+      "type": "numerical",
+      "question": "Let \\(\\omega\\) be a complex cube root of unity. If the equation \\(|z-\\omega|^2+|z-\\omega^2|^2=\\lambda\\) represents a circle with points representing \\(\\omega\\) and \\(\\omega^2\\) as the end points of a diameter, then \\(\\lambda\\) is equal to ______.",
+      "options": [],
+      "answer": 3,
+      "totalMarks": 4,
+      "negativeMarks": 1,
+      "images": [],
+      "tables": [],
+      "id": 17
+    },
+    {
+      "sectionId": 1,
+      "subsection": "numerical",
+      "type": "numerical",
+      "question": "If \\(\\cos \\alpha+2\\cos \\beta+3\\cos \\gamma=\\sin \\alpha+2\\sin \\beta+3\\sin \\gamma=0\\) and \\(\\alpha+\\beta+\\gamma=0\\) then \\(\\cos 3\\alpha+8\\cos 3\\beta+27\\cos 3\\gamma\\) is equal to ______.",
+      "options": [],
+      "answer": 18,
+      "totalMarks": 4,
+      "negativeMarks": 1,
+      "images": [],
+      "tables": [],
+      "id": 18
+    },
+    {
+      "sectionId": 1,
+      "subsection": "numerical",
+      "type": "numerical",
+      "question": "In the sequence \\(1,2,2,3,3,3,4,4,4,4,...\\) where \\(n\\) consecutive terms have the value \\(n\\), the \\(150\\)th term is, ______.",
+      "options": [],
+      "answer": 17,
+      "totalMarks": 4,
+      "negativeMarks": 1,
+      "images": [],
+      "tables": [],
+      "id": 19
+    },
+    {
+      "sectionId": 1,
+      "subsection": "numerical",
+      "type": "numerical",
+      "question": "If \\(\\displaystyle \\sum_{r=0}^{3n} a_r(x-4)^r = \\sum_{r=0}^{3n} A_r(x-5)^r\\) and \\(a_k = 1 \\ \\forall \\ k \\geq 2n\\) and \\(\\displaystyle \\sum_{r=0}^{3n} d_r(x-8)^r = \\sum_{r=0}^{3n} B_r(x-9)^r\\) and \\(\\displaystyle \\sum_{r=0}^{3n} d_r(x-12)^r = \\sum_{r=0}^{3n} D_r(x-13)^r\\) and \\(d_k = 1 \\ \\forall \\ k \\geq 2n\\). Then the value of \\(\\displaystyle\\frac{A_{2n} + D_{2n}}{B_{2n}}\\) is ______.",
+      "options": [],
+      "answer": 2,
+      "totalMarks": 4,
+      "negativeMarks": 1,
+      "images": [],
+      "tables": [],
+      "id": 20
+    },
+    {
+      "sectionId": 1,
+      "subsection": "multi",
+      "type": "multi",
+      "question": "Let \\(z\\) denote a complex number with non-zero imaginary part. Let \\(\\displaystyle f(z)=z^{222}+\\frac{1}{z^{222}}\\). Which of the following is/are correct?",
+      "options": [
+        "If \\(|z|=1\\), then \\(f(z)\\) must be real.",
+        "If \\(\\displaystyle z+\\frac{1}{z}=1\\), then \\(f(z)=2\\).",
+        "If \\(\\displaystyle z+\\frac{1}{z}\\) is real, then \\(|f(z)|\\leq2\\).",
+        "If \\(f(z)\\) is a real number, then \\(f(z)\\) must be positive."
+      ],
+      "answer": [
+        0,
+        1,
+        2
+      ],
+      "totalMarks": 4,
+      "negativeMarks": 1,
+      "images": [],
+      "tables": [],
+      "id": 21
+    },
+    {
+      "sectionId": 1,
+      "subsection": "multi",
+      "type": "multi",
+      "question": "For a sequence \\(\\langle a_i\\rangle\\) of real numbers, we say that \\(\\displaystyle \\sum a_i\\) converges if \\(\\displaystyle \\lim_{n\\to\\infty}\\sum_{i=1}^{n}a_i\\) is finite. For all \\(a_i>0\\) which of the following is/are true?",
+      "options": [
+        "If \\(\\displaystyle \\sum a_i\\) converges, then \\(a_i\\to 0\\) as \\(i\\to \\infty\\).",
+        "If \\(\\displaystyle a_i < \\frac{1}{i}\\) for all \\(i\\), then \\(\\displaystyle \\sum a_i\\) converges.",
+        "If \\(\\displaystyle \\sum a_i\\) converges, then \\(\\displaystyle \\sum (-1)^i a_i\\) also converges.",
+        "If \\(\\displaystyle \\sum a_i\\) does not converge, then \\(\\displaystyle \\sum i\\tan(a_i)\\) cannot converge."
+      ],
+      "answer": [
+        0,
+        2
+      ],
+      "totalMarks": 4,
+      "negativeMarks": 1,
+      "images": [],
+      "tables": [],
+      "id": 22
+    },
+    {
+      "sectionId": 1,
+      "subsection": "multi",
+      "type": "multi",
+      "question": "Suppose \\(a_0,a_1,a_2,a_3,...\\) is an arithmetic progression with \\(a_0\\) and \\(a_1\\) positive integers. Let \\(g_0,g_1,g_2,g_3,...\\) be the geometric progression such that \\(g_0=a_0\\) and \\(g_1=a_1\\). Which of the following is/are correct?",
+      "options": [
+        "We must have \\(a_5^2\\geq a_0a_{10}\\).",
+        "The sum \\(a_0+a_1+...+a_{10}\\) must be a multiple of an integer \\(a_5\\).",
+        "If \\(\\displaystyle \\sum_{i=0}^{\\infty}a_i\\) is \\(+\\infty\\) then \\(\\displaystyle \\sum_{i=0}^{\\infty} g_i\\) is also \\(+\\infty\\).",
+        "If \\(\\displaystyle \\sum_{i=0}^{\\infty}g_i\\) is finite then \\(\\displaystyle \\sum_{i=0}^{\\infty} a_i\\) is \\(-\\infty\\)."
+      ],
+      "answer": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "totalMarks": 4,
+      "negativeMarks": 1,
+      "images": [],
+      "tables": [],
+      "id": 23
+    },
+    {
+      "sectionId": 1,
+      "subsection": "multi",
+      "type": "multi",
+      "question": "Let \\(\\displaystyle \\frac{\\tan(\\alpha-\\beta+\\gamma)}{\\tan(\\alpha+\\beta-\\gamma)}=\\frac{\\tan \\beta}{\\tan \\gamma}\\). Then which of the following is/are correct?",
+      "options": [
+        "\\(\\sin (\\beta-\\gamma)=\\sin(\\alpha-\\beta)\\)",
+        "\\(\\sin (\\alpha-\\gamma)=\\sin(\\beta-\\gamma)\\)",
+        "\\(\\sin(\\beta-\\gamma)=0\\)",
+        "\\(\\sin 2\\alpha+\\sin 2\\beta+ \\sin 2\\gamma=0\\)"
+      ],
+      "answer": [
+        3
+      ],
+      "totalMarks": 4,
+      "negativeMarks": 1,
+      "images": [],
+      "tables": [],
+      "id": 24
+    },
+    {
+      "sectionId": 1,
+      "subsection": "multi",
+      "type": "multi",
+      "question": "Let \\(\\displaystyle (1+x^2)^2(1+x)^n=\\sum_{k=0}^{n+4}a_kx^k\\). If \\(a_1,a_2,a_3\\) are in arithmetic progression then \\(n\\) is equal to",
+      "options": [
+        "\\(6\\)",
+        "\\(4\\)",
+        "\\(3\\)",
+        "\\(2\\)"
+      ],
+      "answer": [
+        1,
+        2,
+        3
+      ],
+      "totalMarks": 4,
+      "negativeMarks": 1,
+      "images": [],
+      "tables": [],
+      "id": 25
+    },
+    {
+      "sectionId": 1,
+      "subsection": "single",
+      "type": "single",
+      "question": "hi",
+      "options": [
+        "w",
+        "r"
+      ],
+      "answer": null,
+      "totalMarks": 4,
+      "negativeMarks": 1,
+      "images": [],
+      "tables": [],
+      "id": 26
+    }
+  ]
+}
